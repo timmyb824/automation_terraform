@@ -1,3 +1,6 @@
 *.DS_Store*
 Archive/
 oracle-cloud/
+*.tfstate*
+.terraform/
+.terraform.lock.hcl
