@@ -4,7 +4,7 @@ resource "proxmox_vm_qemu" "node" {
   target_node = var.pm_node
   # agent             = 1  # will error if agent is not already installed
 
-  clone = "ubuntu-server-jammy"
+  clone = "ubuntu-2204-cloudinit-template"
 
   os_type  = "cloud-init"
   cores    = 2
