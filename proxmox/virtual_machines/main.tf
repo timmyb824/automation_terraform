@@ -9,19 +9,21 @@ resource "proxmox_vm_qemu" "node" {
   os_type  = "cloud-init"
   cores    = 2
   sockets  = "1"
-  cpu      = "host"
+  cpu_type = "host"
   memory   = var.vm_memory
   scsihw   = "virtio-scsi-pci"
   bootdisk = "scsi0"
 
   disk {
     size     = var.vm_disk_size
-    type     = "scsi"
+    type     = "disk"
     storage  = var.storage_name
-    iothread = 0
+    iothread = false
+    slot     = "scsi0"
   }
 
   network {
+    id     = 0
     model  = "virtio"
     bridge = "vmbr0"
   }
