@@ -15,11 +15,11 @@ resource "proxmox_vm_qemu" "node" {
   bootdisk = "scsi0"
 
   disk {
-    size     = var.vm_disk_size
-    type     = "disk"
-    storage  = var.storage_name
-    iothread = false
-    slot     = "scsi0"
+    size    = var.vm_disk_size
+    type    = "disk"
+    storage = var.storage_name
+    # iothread = false
+    slot = "scsi0"
   }
 
   network {
@@ -31,5 +31,6 @@ resource "proxmox_vm_qemu" "node" {
   # cloud-init settings
   # adjust the ip and gateway addresses as needed
   ipconfig0 = "ip=${var.vm_ip}/24,gw=${var.vm_gw}"
+  ssh_user  = "root"
   sshkeys   = file("${var.ssh_key_file}")
 }
